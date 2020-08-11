@@ -13,6 +13,7 @@ import MineScreen from '../../screens/Main/TabMine/MineScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import UI from '../../UI';
 import TrainScreen from '../../screens/Main/TabTrain/TrainScreen';
+import DiscoveryScreen from '../../screens/Main/TabDiscovery/DiscoveryScreen';
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
@@ -36,9 +37,19 @@ export default function TabNav() {
         name="Train"
         component={TrainScreen}
         options={{
-          tabBarLabel: '训练',
+          tabBarLabel: '视频',
           tabBarIcon: ({color, size}) => (
-            <Icon name="rowing" size={30} color={color} />
+            <Icon name="videocam" size={30} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Discovery"
+        component={DiscoveryScreen}
+        options={{
+          tabBarLabel: '发现',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="search" size={30} color={color} />
           ),
         }}
       />
@@ -46,9 +57,9 @@ export default function TabNav() {
         name="Note"
         component={TrainScreen}
         options={{
-          tabBarLabel: '办公',
+          tabBarLabel: '消息',
           tabBarIcon: ({color, size}) => (
-            <Icon name="event" size={30} color={color} />
+            <Icon name="mail" size={30} color={color} />
           ),
         }}
       />

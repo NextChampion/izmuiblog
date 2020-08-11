@@ -25,23 +25,6 @@ export default class AuthNav extends Component {
         headerMode="none"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          header: ({scene, previous, navigation}) => {
-            const {options} = scene.descriptor;
-            const title =
-              options.headerTitle !== undefined
-                ? options.headerTitle
-                : options.title !== undefined
-                ? options.title
-                : scene.route.name;
-
-            return (
-              <Header
-                title={title}
-                previous={previous}
-                navigation={navigation}
-              />
-            );
-          },
         }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />

@@ -21,27 +21,10 @@ export default class StackNav extends Component {
   render() {
     return (
       <Stack.Navigator
-        headerMode="screen"
+        headerMode="none"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           animationEnabled: false,
-          header: ({scene, previous, navigation}) => {
-            const {options} = scene.descriptor;
-            const title =
-              options.headerTitle !== undefined
-                ? options.headerTitle
-                : options.title !== undefined
-                ? options.title
-                : scene.route.name;
-
-            return (
-              <Header
-                title={title}
-                previous={previous}
-                navigation={navigation}
-              />
-            );
-          },
         }}>
         <Stack.Screen name="Home" component={TabNav} />
         <Stack.Screen name="Setting" component={SettingScreen} />

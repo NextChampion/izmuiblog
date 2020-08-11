@@ -9,6 +9,6 @@ export default {
   white: 'white',
   background: 'white',
   black: '#333',
-  primary: '#dd3366',
+  primary: '#e66f36',
   // black: '#ccc',
 };
