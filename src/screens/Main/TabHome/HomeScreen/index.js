@@ -7,13 +7,18 @@
  * @FilePath: /lvsejunying/src/screens/TabHome/HomeScreen/index.js
  */
 import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Button} from 'react-native';
 
 export default class HomeScreen extends PureComponent {
+  onPress = () => {
+    const {navigation} = this.props;
+    navigation.navigate('Setting');
+  };
   render() {
     return (
       <View>
         <Text> HomeScreen </Text>
+        <Button title="跳转到setting" onPress={this.onPress} />
       </View>
     );
   }

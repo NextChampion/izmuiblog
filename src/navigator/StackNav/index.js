@@ -13,18 +13,15 @@ import {CardStyleInterpolators} from '@react-navigation/stack';
 import TabNav from '../TabNav';
 import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
 
-import {Header} from '../../components';
-
 const Stack = createStackNavigator();
 
 export default class StackNav extends Component {
   render() {
     return (
       <Stack.Navigator
-        headerMode="none"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          animationEnabled: false,
+          animationEnabled: true,
         }}>
         <Stack.Screen name="Home" component={TabNav} />
         <Stack.Screen name="Setting" component={SettingScreen} />

@@ -13,7 +13,6 @@ import {CardStyleInterpolators} from '@react-navigation/stack';
 
 import LoginScreen from '../../screens/Auth/LoginScreen';
 import RegisterScreen from '../../screens/Auth/RegisterScreen';
-import {Header} from '../../components';
 import ForgetPasswordScreen from '../../screens/Auth/ForgetPasswordScreen';
 
 const Stack = createStackNavigator();

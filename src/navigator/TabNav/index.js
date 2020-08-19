@@ -12,7 +12,7 @@ import HomeScreen from '../../screens/Main/TabHome/HomeScreen';
 import MineScreen from '../../screens/Main/TabMine/MineScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import UI from '../../UI';
-import TrainScreen from '../../screens/Main/TabTrain/TrainScreen';
+import MessageScreen from '../../screens/Main/TabMessage/MessageScreen';
 import DiscoveryScreen from '../../screens/Main/TabDiscovery/DiscoveryScreen';
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ export default function TabNav() {
       />
       <Tab.Screen
         name="Train"
-        component={TrainScreen}
+        component={MessageScreen}
         options={{
           tabBarLabel: '视频',
           tabBarIcon: ({color, size}) => (
@@ -55,7 +55,7 @@ export default function TabNav() {
       />
       <Tab.Screen
         name="Note"
-        component={TrainScreen}
+        component={MessageScreen}
         options={{
           tabBarLabel: '消息',
           tabBarIcon: ({color, size}) => (
