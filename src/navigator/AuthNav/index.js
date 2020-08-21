@@ -12,6 +12,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {CardStyleInterpolators} from '@react-navigation/stack';
 
 import LoginScreen from '../../screens/Auth/LoginScreen';
+import AuthScreen from '../../screens/Auth/AuthScreen';
 import RegisterScreen from '../../screens/Auth/RegisterScreen';
 import ForgetPasswordScreen from '../../screens/Auth/ForgetPasswordScreen';
 
@@ -25,6 +26,7 @@ export default class AuthNav extends Component {
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
+        <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Forget" component={ForgetPasswordScreen} />

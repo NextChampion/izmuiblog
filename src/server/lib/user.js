@@ -7,11 +7,11 @@
  */
 
 import axios from './axios';
-import {user_url} from './base';
+import {user_url, AppKey} from './base';
 
 export default class User {
   login() {
-    // return axios.post(user_url.login)
+    return axios.post(user_url.auth, {client_id: AppKey});
   }
   register() {}
 }
