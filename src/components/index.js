@@ -5,6 +5,8 @@
  * @LastEditors: zcx4150@gmail.com
  * @Description:
  */
-export Button from './Button';
-export Header from './Header';
-export Container from './Container';
+import Button from './Button';
+import Header from './Header';
+import Container from './Container';
+
+export {Button, Container, Header};

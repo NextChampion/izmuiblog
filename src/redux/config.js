@@ -27,6 +27,7 @@ export const profile = {
     remind_in: '',
     uid: '',
   }),
+  persist: true,
   actions: {
     UPDATE_PROFILE: {
       inputs: ['userId', 'username', 'avatar', 'signup'],
