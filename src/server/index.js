@@ -5,3 +5,10 @@
  * @LastEditors: zcx4150@gmail.com
  * @Description:
  */
+import user from './lib/user';
+
+const server = {
+  user,
+};
+
+export default server;

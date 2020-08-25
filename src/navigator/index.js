@@ -20,6 +20,8 @@ export default class Navigator extends Component {
   render() {
     const {profile} = this.props;
     const isSignup = profile.get('signup');
+    const access_token = profile.get('access_token');
+    console.log('access_token', access_token);
     return (
       <NavigationContainer>
         <Stack.Navigator
@@ -27,7 +29,7 @@ export default class Navigator extends Component {
           screenOptions={{
             animationEnabled: false,
           }}>
-          {!isSignup ? (
+          {!access_token ? (
             <Stack.Screen name="Auth" component={AuthNav} />
           ) : (
             <Stack.Screen name="Main" component={StackNav} />

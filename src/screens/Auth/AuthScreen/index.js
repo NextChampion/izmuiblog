@@ -2,27 +2,32 @@ import React, {PureComponent} from 'react';
 import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Navigator1 from './Navigator1';
-import {AppKey, redirect_uri, client_secret} from '../../../server/lib/base';
+import {
+  AppKey,
+  redirect_uri,
+  client_secret,
+  user_url,
+} from '../../../server/lib/base';
+import {Header} from '../../../components';
+import server from '../../../server';
 
 export default class AuthScreen extends PureComponent {
   //获取code
   onNavigationStateChange = (e) => {
-    console.log('e', e);
+    console.log('onNavigationStateChange', e);
     if (e.loading === true) {
-      var indexStart = e.url.indexOf('=');
-      var indexEnd = e.url.indexOf('&');
-      var code = e.url.substring(indexStart + 1, indexEnd);
-      this.loginAction(code); // 获取授权
+      console.log('e.url', e.url);
+      const [domain, query] = e.url.split('?');
+      const [key, value] = query.split('=');
+      this.loginAction(value); // 获取授权
     }
   };
 
   //获取授权
   loginAction = (code) => {
-    console.log('loginAction code', code);
     // 网络请求里面 有 存值 有 跳转  ? 性能问题
-    const authUrl = 'https://api.weibo.com/oauth2/access_token';
     var uri =
-      authUrl +
+      user_url.authUrl +
       '?client_id=' +
       AppKey +
       '&client_secret=' +
@@ -33,27 +38,12 @@ export default class AuthScreen extends PureComponent {
       code +
       '&redirect_uri=' +
       redirect_uri;
-    console.log('loginAction uri', uri);
     fetch(uri, {
       method: 'POST',
     })
       .then((response) => response.json())
-      .then((json) => {
-        console.log('json', json);
-        if (json.access_token) {
-          //请求uid
-          let url =
-            'https://api.weibo.com/2/account/get_uid.json?access_token=' +
-            json.access_token;
-          fetch(url)
-            .then((response) => response.json())
-            .then((jsonStr) => {
-              console.log('jsonjsonjsonjson', jsonStr);
-              let uid = jsonStr.uid.toString();
-              //存uid
-              console.log('uid', uid);
-            });
-        }
+      .then((userInfo) => {
+        server.user.save(userInfo);
       });
   };
 
@@ -73,13 +63,10 @@ export default class AuthScreen extends PureComponent {
 
   render() {
     let uri =
-      'https://api.weibo.com/oauth2/authorize?client_id=' +
-      AppKey +
-      '&redirect_uri=' +
-      redirect_uri;
-    console.log('render uri', uri);
+      user_url.auth + '?client_id=' + AppKey + '&redirect_uri=' + redirect_uri;
     return (
       <View style={styles.container}>
+        <Header />
         <Navigator1
           leftText="返回"
           centerText="授权"

@@ -20,10 +20,12 @@ export const version = {
 
 export const profile = {
   default: Immutable.fromJS({
-    userId: '',
-    username: '',
-    avatar: '',
     signup: false,
+    access_token: '',
+    expires_in: 0,
+    isRealName: false,
+    remind_in: '',
+    uid: '',
   }),
   actions: {
     UPDATE_PROFILE: {
@@ -31,6 +33,13 @@ export const profile = {
       reducer: (state, {payload}) => {
         if (payload.username) {
         }
+        return state.merge(payload);
+      },
+    },
+    UPDATE_USERINFO: {
+      inputs: ['uid', 'remind_in', 'expires_in', 'isRealName', 'access_token'],
+      reducer: (state, {payload}) => {
+        console.log('UPDATE_USERINFO', payload);
         return state.merge(payload);
       },
     },

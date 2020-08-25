@@ -8,10 +8,15 @@
 
 import axios from './axios';
 import {user_url, AppKey} from './base';
+import {dispatch} from '../../redux';
 
-export default class User {
-  login() {
+const user = {
+  login: () => {
     return axios.post(user_url.auth, {client_id: AppKey});
-  }
-  register() {}
-}
+  },
+  save: (userInfo) => {
+    dispatch('UPDATE_USERINFO', userInfo);
+  },
+  register: () => {},
+};
+export default user;
