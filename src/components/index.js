@@ -8,5 +8,6 @@
 import Button from './Button';
 import Header from './Header';
 import Container from './Container';
+import PlaceHolder from './PlaceHolder';
 
-export {Button, Container, Header};
+export {Button, Container, Header, PlaceHolder};

@@ -7,30 +7,24 @@
  * @FilePath: /lvsejunying/src/screens/TabMine/MineScreen/index.js
  */
 import React, {PureComponent} from 'react';
-import {Text, View, Alert} from 'react-native';
-import {Header} from '../../../../components';
-import UserInfo from './components/UserInfo';
-import Num from './components/Num';
+import {Text, View, Alert, StyleSheet} from 'react-native';
+import {PlaceHolder} from '../../../../components';
 import server from '../../../../server';
 import connect from '../../../../redux/connect';
 import {dispatch} from '../../../../redux';
+import UI from '../../../../UI';
+import UserInfo from './components/UserInfo';
 
 @connect(['mine'])
 export default class MineScreen extends PureComponent {
   static whyDidYouRender = true;
-  state = {
-    num: 0,
-    userInfo: {
-      nickname: '张三',
-      age: 20,
-    },
-  };
 
   componentDidMount() {
     this.getUserInfo();
   }
 
   componentWillUnmount() {}
+
   getUserInfo = async () => {
     const {mine} = this.props;
     // 如果有信息,暂时不获取
@@ -52,14 +46,20 @@ export default class MineScreen extends PureComponent {
   };
 
   render() {
-    const {userInfo, num} = this.state;
+    const {mine} = this.props;
+    if (!mine.size) {
+      return <PlaceHolder />;
+    }
     return (
-      <View>
-        <Header />
-        <Text> MineScreen </Text>
-        <Num num={num} />
-        <UserInfo userInfo={userInfo} />
+      <View style={styles.container}>
+        <UserInfo userInfo={mine} />
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: UI.color.background,
+  },
+});

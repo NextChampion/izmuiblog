@@ -7,7 +7,7 @@
  */
 export default {
   white: 'white',
-  background: 'white',
+  background: '#DDDDDD',
   black: '#333',
   primary: '#e66f36',
   // black: '#ccc',
