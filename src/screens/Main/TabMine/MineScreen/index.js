@@ -52,7 +52,7 @@ export default class MineScreen extends PureComponent {
     }
     return (
       <View style={styles.container}>
-        <UserInfo userInfo={mine} />
+        <UserInfo style={styles.userInfo} userInfo={mine} />
       </View>
     );
   }
@@ -61,5 +61,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: UI.color.background,
+  },
+  userInfo: {
+    marginVertical: 10,
   },
 });
