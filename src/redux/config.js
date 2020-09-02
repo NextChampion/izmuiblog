@@ -32,8 +32,6 @@ export const profile = {
     UPDATE_PROFILE: {
       inputs: ['userId', 'username', 'avatar', 'signup'],
       reducer: (state, {payload}) => {
-        if (payload.username) {
-        }
         return state.merge(payload);
       },
     },
@@ -41,6 +39,18 @@ export const profile = {
       inputs: ['uid', 'remind_in', 'expires_in', 'isRealName', 'access_token'],
       reducer: (state, {payload}) => {
         console.log('UPDATE_USERINFO', payload);
+        return state.merge(payload);
+      },
+    },
+  },
+};
+
+export const mine = {
+  default: Immutable.fromJS({}),
+  persist: true,
+  actions: {
+    UPDATE_MINE: {
+      reducer: (state, {payload}) => {
         return state.merge(payload);
       },
     },
