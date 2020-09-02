@@ -30,9 +30,12 @@ export default function TabNav() {
         component={HomeScreen}
         options={{
           tabBarLabel: '首页',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" size={30} color={color} />
-          ),
+          tabBarIcon: (params) => {
+            const { color, } = params;
+            return (
+              <Icon name="home" size={30} color={color} />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -40,9 +43,12 @@ export default function TabNav() {
         component={MessageScreen}
         options={{
           tabBarLabel: '视频',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="videocam" size={30} color={color} />
-          ),
+          tabBarIcon: (params) => {
+            const { color, } = params;
+            return (
+              <Icon name="videocam" size={30} color={color} />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -50,9 +56,12 @@ export default function TabNav() {
         component={DiscoveryScreen}
         options={{
           tabBarLabel: '发现',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="search" size={30} color={color} />
-          ),
+          tabBarIcon: (params) => {
+            const { color, } = params;
+            return (
+              <Icon name="search" size={30} color={color} />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -60,9 +69,12 @@ export default function TabNav() {
         component={MessageScreen}
         options={{
           tabBarLabel: '消息',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="mail" size={30} color={color} />
-          ),
+          tabBarIcon: (params) => {
+            const { color, } = params;
+            return (
+              <Icon name="mail" size={30} color={color} />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -70,9 +82,12 @@ export default function TabNav() {
         component={MineScreen}
         options={{
           tabBarLabel: '我的',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="person" size={30} color={color} />
-          ),
+          tabBarIcon: (params) => {
+            const { color, } = params;
+            return (
+              <Icon name="person" size={30} color={color} />
+            );
+          },
         }}
       />
     </Tab.Navigator>

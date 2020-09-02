@@ -10,6 +10,7 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import PropTypes from 'prop-types';
 import StackNav from './StackNav/index';
 import connect from '../redux/connect';
 import AuthNav from './AuthNav';
@@ -39,3 +40,17 @@ export default class Navigator extends Component {
     );
   }
 }
+
+Navigator.propTypes = {
+  profile: PropTypes.shape({
+    size: PropTypes.number,
+    get: PropTypes.func
+  })
+};
+
+Navigator.defaultProps = {
+  profile: {
+    size: 0,
+    get: () => {}
+  }
+};
