@@ -6,8 +6,16 @@
  * @Description:
  */
 import color from './lib/color';
+import margin from './lib/margin';
+import padding from './lib/padding';
+import fontWeight from './lib/fontWeight';
+import fontSize from './lib/fontSize';
 const UI = {
   color,
+  margin,
+  padding,
+  fontWeight,
+  fontSize,
 };
 
 export default UI;

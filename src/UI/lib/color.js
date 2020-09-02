@@ -10,5 +10,7 @@ export default {
   background: '#DDDDDD',
   black: '#333',
   primary: '#e66f36',
+  gray: '#909090',
+  title: '#272727',
   // black: '#ccc',
 };
