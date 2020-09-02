@@ -14,7 +14,6 @@ module.exports = {
       'error',
       { functions: true, classes: true, variables: false },
     ],
-    'no-console': ['error'],
     'no-var': 'error',
     'global-require': 'off',
     'no-unused-vars': 'warn',
@@ -29,6 +28,7 @@ module.exports = {
     'import/no-unresolved': 'warn',
     'import/namespace': 'error',
     'import/export': 'warn',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'no-console': ['error', { allow: ['info', 'warn', 'debug'] }],
   },
 };
