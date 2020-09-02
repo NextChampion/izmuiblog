@@ -7,8 +7,8 @@
  */
 
 import axios from './axios';
-import {user_url, AppKey} from './base';
-import {dispatch} from '../../redux';
+import {user_url, AppKey, getGetUrl} from './base';
+import {dispatch, store} from '../../redux';
 
 const user = {
   login: () => {
@@ -18,5 +18,21 @@ const user = {
     dispatch('UPDATE_USERINFO', userInfo);
   },
   register: () => {},
+  getUserInfo: async () => {
+    const {profile} = store.getState();
+    const access_token = profile.get('access_token');
+    const uid = profile.get('uid');
+    let res = null;
+    const url = getGetUrl(user_url.userInfo, {access_token, uid});
+    try {
+      res = await axios.get(url);
+      const {status, data} = res || {};
+      if (status === 200) {
+        return {success: true, data};
+      }
+    } catch (error) {
+      return {success: false, error};
+    }
+  },
 };
 export default user;
