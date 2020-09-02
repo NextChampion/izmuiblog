@@ -8,7 +8,7 @@
  */
 import React, { PureComponent } from 'react';
 import {
-  View, Alert, StyleSheet,
+  View, Alert, StyleSheet, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { PlaceHolder } from '../../../../components';
@@ -55,10 +55,10 @@ export default class MineScreen extends PureComponent {
       return <PlaceHolder />;
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <UserInfo style={styles.userInfo} userInfo={mine} />
         <DashBoard />
-      </View>
+      </ScrollView>
     );
   }
 }
