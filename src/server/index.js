@@ -5,10 +5,6 @@
  * @LastEditors: zcx4150@gmail.com
  * @Description:
  */
-import user from './lib/user';
+import axios from './lib/axios';
 
-const server = {
-  user,
-};
-
-export default server;
+export default axios;

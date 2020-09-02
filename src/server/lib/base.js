@@ -24,9 +24,6 @@ export const UserUrl = {
   login: `https://api.weibo.com/oauth2/access_token?client_id=${AppKey}&client_secret=${clientSecret}&grant_type=authorization_code&redirect_uri=${redirectUri}`,
 };
 
-// 审批相关
-export const Approve = {};
-
 export function getGetUrl(base, params) {
   if (!params) {
     return base;

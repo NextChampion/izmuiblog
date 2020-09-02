@@ -8,7 +8,7 @@
  */
 import React, { PureComponent } from 'react';
 import {
-  View, Alert, StyleSheet, ScrollView
+  Alert, StyleSheet, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { PlaceHolder } from '../../../../components';
@@ -16,7 +16,7 @@ import { PlaceHolder } from '../../../../components';
 import connect from '../../../../redux/connect';
 import UI from '../../../../UI';
 import UserInfo from './components/UserInfo';
-import blog from '../../../../blog';
+import izmuz from '../../../../izmuz';
 import DashBoard from './components/DashBoard';
 
 @connect(['mine'])
@@ -35,13 +35,13 @@ export default class MineScreen extends PureComponent {
     if (mine.size) {
       return;
     }
-    const result = await blog.mine.getUserInfo();
+    const result = await izmuz.mine.getUserInfo();
     const { success, data, error } = result || {};
     if (!success) {
       Alert('Error', error);
       return;
     }
-    blog.mine.saveMineInfo(data);
+    izmuz.mine.saveMineInfo(data);
   };
 
   increase = () => {

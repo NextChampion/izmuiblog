@@ -12,7 +12,7 @@ import {
 } from '../../../server/lib/base';
 import { Header } from '../../../components';
 
-import blog from '../../../blog';
+import izmuz from '../../../izmuz';
 
 export default class AuthScreen extends PureComponent {
   // 获取code
@@ -37,12 +37,12 @@ export default class AuthScreen extends PureComponent {
         code
       }&redirect_uri=${
         redirectUri}`;
-    const res = await blog.mine.auth(uri);
+    const res = await izmuz.mine.auth(uri);
     const { success, data } = res || {};
     if (!success) {
       return;
     }
-    blog.mine.save(data);
+    izmuz.mine.save(data);
   };
 
   rightAction = () => {};
