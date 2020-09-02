@@ -17,6 +17,7 @@ import connect from '../../../../redux/connect';
 import UI from '../../../../UI';
 import UserInfo from './components/UserInfo';
 import blog from '../../../../blog';
+import DashBoard from './components/DashBoard';
 
 @connect(['mine'])
 export default class MineScreen extends PureComponent {
@@ -56,6 +57,7 @@ export default class MineScreen extends PureComponent {
     return (
       <View style={styles.container}>
         <UserInfo style={styles.userInfo} userInfo={mine} />
+        <DashBoard />
       </View>
     );
   }
