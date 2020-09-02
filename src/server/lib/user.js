@@ -15,6 +15,20 @@ const user = {
   save: (userInfo) => {
     dispatch('UPDATE_USERINFO', userInfo);
   },
+  auth: async (authUrl) => {
+    let res = null;
+    try {
+      res = await axios.post(authUrl);
+      console.log('res', res);
+      const { status, data } = res || {};
+      if (status === 200) {
+        return { success: true, data };
+      }
+    } catch (error) {
+      return { success: false, error };
+    }
+    return { success: false };
+  },
   register: () => {},
   getUserInfo: async () => {
     const { profile } = store.getState();

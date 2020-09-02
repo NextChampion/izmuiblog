@@ -3,6 +3,7 @@ import {
   View, StyleSheet, ActivityIndicator,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
+import PropTypes from 'prop-types';
 import {
   AppKey,
   redirectUri,
@@ -23,8 +24,7 @@ export default class AuthScreen extends PureComponent {
   };
 
   // 获取授权
-  loginAction = (code) => {
-    // 网络请求里面 有 存值 有 跳转  ? 性能问题
+  loginAction = async (code) => {
     const uri = `${UserUrl.authUrl
     }?client_id=${
       AppKey
@@ -36,17 +36,12 @@ export default class AuthScreen extends PureComponent {
         code
       }&redirect_uri=${
         redirectUri}`;
-    fetch(uri, {
-      method: 'POST',
-    })
-      .then((response) => response.json())
-      .then((userInfo) => {
-        server.user.save(userInfo);
-      });
-  };
-
-  leftAction = () => {
-    this.props.navigator.pop({});
+    const res = await server.user.auth(uri);
+    const { success, data } = res || {};
+    if (!success) {
+      return;
+    }
+    server.user.save(data);
   };
 
   rightAction = () => {};
@@ -73,6 +68,20 @@ export default class AuthScreen extends PureComponent {
     );
   }
 }
+
+AuthScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+    pop: PropTypes.func,
+  })
+};
+
+AuthScreen.defaultProps = {
+  navigation: {
+    navigate: () => {},
+    pop: () => {}
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
