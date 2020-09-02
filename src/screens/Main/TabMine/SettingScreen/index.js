@@ -6,8 +6,8 @@
  * @Description:
  * @FilePath: /lvsejunying/src/screens/TabMine/SettingScreen/index.js
  */
-import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
 
 export default class SettingScreen extends PureComponent {
   render() {

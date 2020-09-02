@@ -10,4 +10,6 @@ import Header from './Header';
 import Container from './Container';
 import PlaceHolder from './PlaceHolder';
 
-export {Button, Container, Header, PlaceHolder};
+export {
+  Button, Container, Header, PlaceHolder,
+};

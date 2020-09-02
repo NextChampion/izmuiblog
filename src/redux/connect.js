@@ -5,9 +5,9 @@
  * @LastEditors: zcx4150@gmail.com
  * @Description:
  */
-import {connect as connectRedux} from 'react-redux';
+import { connect as connectRedux } from 'react-redux';
 import R from 'ramda';
 
-export default function (keys) {
+export default function connect(keys) {
   return connectRedux(R.pick(keys));
 }

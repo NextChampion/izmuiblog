@@ -7,32 +7,31 @@
  */
 
 import axios from './axios';
-import {user_url, AppKey, getGetUrl} from './base';
-import {dispatch, store} from '../../redux';
+import { UserUrl, AppKey, getGetUrl } from './base';
+import { dispatch, store } from '../../redux';
 
 const user = {
-  login: () => {
-    return axios.post(user_url.auth, {client_id: AppKey});
-  },
+  login: () => axios.post(UserUrl.auth, { client_id: AppKey }),
   save: (userInfo) => {
     dispatch('UPDATE_USERINFO', userInfo);
   },
   register: () => {},
   getUserInfo: async () => {
-    const {profile} = store.getState();
-    const access_token = profile.get('access_token');
+    const { profile } = store.getState();
+    const accessToken = profile.get('access_token');
     const uid = profile.get('uid');
     let res = null;
-    const url = getGetUrl(user_url.userInfo, {access_token, uid});
+    const url = getGetUrl(UserUrl.userInfo, { access_token: accessToken, uid });
     try {
       res = await axios.get(url);
-      const {status, data} = res || {};
+      const { status, data } = res || {};
       if (status === 200) {
-        return {success: true, data};
+        return { success: true, data };
       }
     } catch (error) {
-      return {success: false, error};
+      return { success: false, error };
     }
+    return { success: false };
   },
 };
 export default user;

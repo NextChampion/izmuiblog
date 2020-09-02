@@ -13,7 +13,7 @@ export const version = {
   persist: true,
   actions: {
     SET_VERSION: {
-      reducer: (state, {payload}) => state.merge(payload),
+      reducer: (state, { payload }) => state.merge(payload),
     },
   },
 };
@@ -31,16 +31,11 @@ export const profile = {
   actions: {
     UPDATE_PROFILE: {
       inputs: ['userId', 'username', 'avatar', 'signup'],
-      reducer: (state, {payload}) => {
-        return state.merge(payload);
-      },
+      reducer: (state, { payload }) => state.merge(payload),
     },
     UPDATE_USERINFO: {
       inputs: ['uid', 'remind_in', 'expires_in', 'isRealName', 'access_token'],
-      reducer: (state, {payload}) => {
-        console.log('UPDATE_USERINFO', payload);
-        return state.merge(payload);
-      },
+      reducer: (state, { payload }) => state.merge(payload),
     },
   },
 };
@@ -50,9 +45,7 @@ export const mine = {
   persist: true,
   actions: {
     UPDATE_MINE: {
-      reducer: (state, {payload}) => {
-        return state.merge(payload);
-      },
+      reducer: (state, { payload }) => state.merge(payload),
     },
   },
 };

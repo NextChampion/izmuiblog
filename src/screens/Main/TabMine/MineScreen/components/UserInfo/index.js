@@ -1,17 +1,20 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import React, { PureComponent } from 'react';
+import {
+  Text, View, StyleSheet, Image,
+} from 'react-native';
 import UI from '../../../../../../UI';
 
 export default class UserInfo extends PureComponent {
   static whyDidYouRender = true;
+
   render() {
-    const {userInfo, style} = this.props;
+    const { userInfo, style } = this.props;
     return (
       <View style={StyleSheet.compose(styles.container, style)}>
         <View style={styles.topView}>
           <Image
             style={styles.avatar}
-            source={{uri: userInfo.get('avatar_large')}}
+            source={{ uri: userInfo.get('avatar_large') }}
           />
           <View style={styles.topRightView}>
             <Text style={styles.nickname}>{userInfo.get('screen_name')}</Text>
@@ -29,7 +32,7 @@ export default class UserInfo extends PureComponent {
 }
 
 function Item(props) {
-  const {title, num} = props || {};
+  const { title, num } = props || {};
   return (
     <View style={styles.item}>
       <Text style={styles.num}>{num}</Text>
@@ -37,6 +40,7 @@ function Item(props) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: UI.color.white,

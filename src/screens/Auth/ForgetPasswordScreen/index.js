@@ -1,6 +1,8 @@
-import React, {PureComponent} from 'react';
-import {Text, View, Image, TextInput, StyleSheet} from 'react-native';
-import {Button, Container} from '../../../components';
+import React, { PureComponent } from 'react';
+import {
+  Text, View, Image, TextInput, StyleSheet,
+} from 'react-native';
+import { Button, Container } from '../../../components';
 import UI from '../../../UI';
 
 export default class ForgetPasswordScreen extends PureComponent {

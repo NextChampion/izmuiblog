@@ -7,9 +7,8 @@
  * @FilePath: /lvsejunying/src/navigator/StackNav/index.js
  */
 
-import React, {Component} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {CardStyleInterpolators} from '@react-navigation/stack';
+import React, { memo } from 'react';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
 import LoginScreen from '../../screens/Auth/LoginScreen';
 import AuthScreen from '../../screens/Auth/AuthScreen';
@@ -18,19 +17,20 @@ import ForgetPasswordScreen from '../../screens/Auth/ForgetPasswordScreen';
 
 const Stack = createStackNavigator();
 
-export default class AuthNav extends Component {
-  render() {
-    return (
-      <Stack.Navigator
-        headerMode="none"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        }}>
-        <Stack.Screen name="Auth" component={AuthScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Forget" component={ForgetPasswordScreen} />
-      </Stack.Navigator>
-    );
-  }
+function AuthNav() {
+  return (
+    <Stack.Navigator
+      headerMode="none"
+      screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <Stack.Screen name="Auth" component={AuthScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Forget" component={ForgetPasswordScreen} />
+    </Stack.Navigator>
+  );
 }
+
+export default memo(AuthNav);

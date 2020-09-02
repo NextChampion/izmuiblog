@@ -7,29 +7,29 @@
  * @FilePath: /lvsejunying/src/navigator/index.js
  */
 
-import React, {Component} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { Component } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import StackNav from './StackNav/index';
 import connect from '../redux/connect';
 import AuthNav from './AuthNav';
+
 const Stack = createStackNavigator();
 
 @connect(['profile'])
 export default class Navigator extends Component {
   render() {
-    const {profile} = this.props;
-    const isSignup = profile.get('signup');
-    const access_token = profile.get('access_token');
-    console.log('access_token', access_token);
+    const { profile } = this.props;
+    const accessToken = profile.get('access_token');
     return (
       <NavigationContainer>
         <Stack.Navigator
           headerMode="none"
           screenOptions={{
             animationEnabled: false,
-          }}>
-          {!access_token ? (
+          }}
+        >
+          {!accessToken ? (
             <Stack.Screen name="Auth" component={AuthNav} />
           ) : (
             <Stack.Screen name="Main" component={StackNav} />

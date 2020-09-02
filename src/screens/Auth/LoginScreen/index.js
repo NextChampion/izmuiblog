@@ -6,14 +6,18 @@
  * @Description:
  * @FilePath: /lvsejunying/src/screens/LoginScreen/index.js
  */
-import React, {PureComponent} from 'react';
-import {Text, View, TextInput, StyleSheet, Image} from 'react-native';
+import React, { PureComponent } from 'react';
+import {
+  Text, View, TextInput, StyleSheet, Image,
+} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import UI from '../../../UI';
-import {Button, Container} from '../../../components';
-import {dispatch} from '../../../redux';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { Button, Container } from '../../../components';
+import { dispatch } from '../../../redux';
+
 export default class LoginScreen extends PureComponent {
   username = '';
+
   pwd = '';
 
   onUsernameChange = (text) => {
@@ -27,16 +31,16 @@ export default class LoginScreen extends PureComponent {
   };
 
   login = () => {
-    dispatch('UPDATE_PROFILE', {signup: true});
+    dispatch('UPDATE_PROFILE', { signup: true });
   };
 
   register = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Register');
   };
 
   forgetPwd = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Forget');
   };
 

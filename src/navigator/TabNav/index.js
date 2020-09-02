@@ -7,13 +7,14 @@
  * @FilePath: /lvsejunying/src/navigator/TabNav/index.js
  */
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../../screens/Main/TabHome/HomeScreen';
 import MineScreen from '../../screens/Main/TabMine/MineScreen';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import UI from '../../UI';
 import MessageScreen from '../../screens/Main/TabMessage/MessageScreen';
 import DiscoveryScreen from '../../screens/Main/TabDiscovery/DiscoveryScreen';
+
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
@@ -22,13 +23,14 @@ export default function TabNav() {
       tabBarOptions={{
         activeTintColor: UI.color.primary,
         inactiveTintColor: 'gray',
-      }}>
+      }}
+    >
       <Tab.Screen
         name="TabHome"
         component={HomeScreen}
         options={{
           tabBarLabel: '首页',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Icon name="home" size={30} color={color} />
           ),
         }}
@@ -38,7 +40,7 @@ export default function TabNav() {
         component={MessageScreen}
         options={{
           tabBarLabel: '视频',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Icon name="videocam" size={30} color={color} />
           ),
         }}
@@ -48,7 +50,7 @@ export default function TabNav() {
         component={DiscoveryScreen}
         options={{
           tabBarLabel: '发现',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Icon name="search" size={30} color={color} />
           ),
         }}
@@ -58,7 +60,7 @@ export default function TabNav() {
         component={MessageScreen}
         options={{
           tabBarLabel: '消息',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Icon name="mail" size={30} color={color} />
           ),
         }}
@@ -68,7 +70,7 @@ export default function TabNav() {
         component={MineScreen}
         options={{
           tabBarLabel: '我的',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Icon name="person" size={30} color={color} />
           ),
         }}

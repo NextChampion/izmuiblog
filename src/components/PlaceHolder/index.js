@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
 export default class PlaceHolder extends PureComponent {
   render() {

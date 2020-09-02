@@ -6,12 +6,14 @@
  * @Description:
  * @FilePath: /lvsejunying/src/screens/TabMine/MineScreen/index.js
  */
-import React, {PureComponent} from 'react';
-import {Text, View, Alert, StyleSheet} from 'react-native';
-import {PlaceHolder} from '../../../../components';
+import React, { PureComponent } from 'react';
+import {
+  View, Alert, StyleSheet,
+} from 'react-native';
+import { PlaceHolder } from '../../../../components';
 import server from '../../../../server';
 import connect from '../../../../redux/connect';
-import {dispatch} from '../../../../redux';
+import { dispatch } from '../../../../redux';
 import UI from '../../../../UI';
 import UserInfo from './components/UserInfo';
 
@@ -26,13 +28,13 @@ export default class MineScreen extends PureComponent {
   componentWillUnmount() {}
 
   getUserInfo = async () => {
-    const {mine} = this.props;
+    const { mine } = this.props;
     // 如果有信息,暂时不获取
     if (mine.size) {
       return;
     }
     const result = await server.user.getUserInfo();
-    const {success, data, error} = result || {};
+    const { success, data, error } = result || {};
     if (!success) {
       Alert('Error', error);
       return;
@@ -41,12 +43,12 @@ export default class MineScreen extends PureComponent {
   };
 
   increase = () => {
-    const {num} = this.state;
-    this.setState({num: num + 1});
+    const { num } = this.state;
+    this.setState({ num: num + 1 });
   };
 
   render() {
-    const {mine} = this.props;
+    const { mine } = this.props;
     if (!mine.size) {
       return <PlaceHolder />;
     }

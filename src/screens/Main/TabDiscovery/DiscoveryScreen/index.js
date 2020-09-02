@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
 
 export default class DiscoveryScreen extends PureComponent {
   render() {

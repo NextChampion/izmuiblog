@@ -7,25 +7,26 @@
  * @FilePath: /lvsejunying/src/navigator/StackNav/index.js
  */
 
-import React, {Component} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {CardStyleInterpolators} from '@react-navigation/stack';
+import React, { memo } from 'react';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+
 import TabNav from '../TabNav';
 import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
 
 const Stack = createStackNavigator();
 
-export default class StackNav extends Component {
-  render() {
-    return (
-      <Stack.Navigator
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          animationEnabled: true,
-        }}>
-        <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name="Setting" component={SettingScreen} />
-      </Stack.Navigator>
-    );
-  }
+function StackNav() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        animationEnabled: true,
+      }}
+    >
+      <Stack.Screen name="Home" component={TabNav} />
+      <Stack.Screen name="Setting" component={SettingScreen} />
+    </Stack.Navigator>
+  );
 }
+
+export default memo(StackNav);

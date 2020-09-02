@@ -6,10 +6,9 @@
  * @Description:
  * @FilePath: /lvsejunying/src/screens/SplashScreen/index.js
  */
-import React, {PureComponent} from 'react';
-import {Text, View, Button} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, Button } from 'react-native';
 import Splash from 'react-native-splash-screen';
-import {dispatch} from '../../redux';
 import connect from '../../redux/connect';
 
 connect(['profile']);
@@ -19,7 +18,7 @@ export default class SplashScreen extends PureComponent {
   }
 
   goToHome = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Main');
   };
 
@@ -29,9 +28,9 @@ export default class SplashScreen extends PureComponent {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Text> SplashScreen </Text>
-        <Button title={'进入首页'} onPress={this.onBtnClick} />
+        <Button title="进入首页" onPress={this.onBtnClick} />
       </View>
     );
   }

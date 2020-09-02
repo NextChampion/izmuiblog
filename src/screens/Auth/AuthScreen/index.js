@@ -1,43 +1,41 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
-import {WebView} from 'react-native-webview';
-import Navigator1 from './Navigator1';
+import React, { PureComponent } from 'react';
+import {
+  View, StyleSheet, ActivityIndicator,
+} from 'react-native';
+import { WebView } from 'react-native-webview';
 import {
   AppKey,
-  redirect_uri,
-  client_secret,
-  user_url,
+  redirectUri,
+  clientSecret,
+  UserUrl,
 } from '../../../server/lib/base';
-import {Header} from '../../../components';
+import { Header } from '../../../components';
 import server from '../../../server';
 
 export default class AuthScreen extends PureComponent {
-  //获取code
+  // 获取code
   onNavigationStateChange = (e) => {
-    console.log('onNavigationStateChange', e);
     if (e.loading === true) {
-      console.log('e.url', e.url);
-      const [domain, query] = e.url.split('?');
-      const [key, value] = query.split('=');
+      const [, query] = e.url.split('?');
+      const [, value] = query.split('=');
       this.loginAction(value); // 获取授权
     }
   };
 
-  //获取授权
+  // 获取授权
   loginAction = (code) => {
     // 网络请求里面 有 存值 有 跳转  ? 性能问题
-    var uri =
-      user_url.authUrl +
-      '?client_id=' +
-      AppKey +
-      '&client_secret=' +
-      client_secret +
-      '&grant_type=' +
-      'authorization_code' +
-      '&code=' +
-      code +
-      '&redirect_uri=' +
-      redirect_uri;
+    const uri = `${UserUrl.authUrl
+    }?client_id=${
+      AppKey
+    }&client_secret=${
+      clientSecret
+    }&grant_type=`
+      + 'authorization_code'
+      + `&code=${
+        code
+      }&redirect_uri=${
+        redirectUri}`;
     fetch(uri, {
       method: 'POST',
     })
@@ -53,32 +51,22 @@ export default class AuthScreen extends PureComponent {
 
   rightAction = () => {};
 
-  renderActivityIndicator() {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator />
-      </View>
-    );
-  }
+  renderActivityIndicator = () => (
+    <View style={styles.loading}>
+      <ActivityIndicator />
+    </View>
+  )
 
   render() {
-    let uri =
-      user_url.auth + '?client_id=' + AppKey + '&redirect_uri=' + redirect_uri;
+    const uri = `${UserUrl.auth}?client_id=${AppKey}&redirect_uri=${redirectUri}`;
     return (
       <View style={styles.container}>
         <Header />
-        <Navigator1
-          leftText="返回"
-          centerText="授权"
-          rightText="  "
-          leftAction={() => this.leftAction()}
-          rightAction={() => this.rightAction()}
-        />
         <WebView
           onNavigationStateChange={(e) => this.onNavigationStateChange(e)}
           style={styles.webview}
-          source={{uri: uri, method: 'GET'}}
-          startInLoadingState={true}
+          source={{ uri, method: 'GET' }}
+          startInLoadingState
           renderLoading={this.renderActivityIndicator}
         />
       </View>
