@@ -32,7 +32,9 @@ export function getGetUrl(base, params) {
     return base;
   }
   let innerUrl = `${base}?`;
+  // eslint-disable-next-line no-restricted-syntax
   for (const key in params) {
+    // eslint-disable-next-line no-prototype-builtins
     if (params.hasOwnProperty(key)) {
       const element = params[key];
       const query = `${key}=${element}&`;
