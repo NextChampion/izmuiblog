@@ -12,10 +12,11 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { PlaceHolder } from '../../../../components';
-import server from '../../../../server';
+
 import connect from '../../../../redux/connect';
 import UI from '../../../../UI';
 import UserInfo from './components/UserInfo';
+import blog from '../../../../blog';
 
 @connect(['mine'])
 export default class MineScreen extends PureComponent {
@@ -33,13 +34,13 @@ export default class MineScreen extends PureComponent {
     if (mine.size) {
       return;
     }
-    const result = await server.user.getUserInfo();
+    const result = await blog.mine.getUserInfo();
     const { success, data, error } = result || {};
     if (!success) {
       Alert('Error', error);
       return;
     }
-    server.user.saveMineInfo(data);
+    blog.mine.saveMineInfo(data);
   };
 
   increase = () => {

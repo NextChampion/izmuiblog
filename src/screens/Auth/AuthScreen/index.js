@@ -11,7 +11,8 @@ import {
   UserUrl,
 } from '../../../server/lib/base';
 import { Header } from '../../../components';
-import server from '../../../server';
+
+import blog from '../../../blog';
 
 export default class AuthScreen extends PureComponent {
   // 获取code
@@ -36,12 +37,12 @@ export default class AuthScreen extends PureComponent {
         code
       }&redirect_uri=${
         redirectUri}`;
-    const res = await server.user.auth(uri);
+    const res = await blog.mine.auth(uri);
     const { success, data } = res || {};
     if (!success) {
       return;
     }
-    server.user.save(data);
+    blog.mine.save(data);
   };
 
   rightAction = () => {};

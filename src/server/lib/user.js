@@ -7,17 +7,9 @@
  */
 
 import axios from './axios';
-import { UserUrl, AppKey, getGetUrl } from './base';
-import { dispatch, store } from '../../redux';
 
 const user = {
-  login: () => axios.post(UserUrl.auth, { client_id: AppKey }),
-  save: (userInfo) => {
-    dispatch('UPDATE_USERINFO', userInfo);
-  },
-  saveMineInfo: (mineInfo) => {
-    dispatch('UPDATE_MINE', mineInfo);
-  },
+  login: (url, params) => axios.post(url, params),
   auth: async (authUrl) => {
     let res = null;
     try {
@@ -31,13 +23,8 @@ const user = {
     }
     return { success: false, };
   },
-  register: () => {},
-  getUserInfo: async () => {
-    const { profile } = store.getState();
-    const accessToken = profile.get('access_token');
-    const uid = profile.get('uid');
+  getUserInfo: async (url) => {
     let res = null;
-    const url = getGetUrl(UserUrl.userInfo, { access_token: accessToken, uid });
     try {
       res = await axios.get(url);
       const { status, data } = res || {};
