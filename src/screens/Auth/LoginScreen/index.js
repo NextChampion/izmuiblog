@@ -11,6 +11,7 @@ import {
   Text, View, TextInput, StyleSheet, Image,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import PropTypes from 'prop-types';
 import UI from '../../../UI';
 import { Button, Container } from '../../../components';
 import { dispatch } from '../../../redux';
@@ -21,12 +22,10 @@ export default class LoginScreen extends PureComponent {
   pwd = '';
 
   onUsernameChange = (text) => {
-    console.log('text', text);
     this.username = text.trim();
   };
 
   onPwdChange = (text) => {
-    console.log('text', text);
     this.pwd = text.trim();
   };
 
@@ -85,6 +84,18 @@ export default class LoginScreen extends PureComponent {
     );
   }
 }
+
+LoginScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func
+  })
+};
+
+LoginScreen.defaultProps = {
+  navigation: {
+    navigate: () => {}
+  }
+};
 
 const styles = StyleSheet.create({
   container: {

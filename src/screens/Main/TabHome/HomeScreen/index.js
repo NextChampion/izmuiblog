@@ -8,6 +8,7 @@
  */
 import React, { PureComponent } from 'react';
 import { Text, View, Button } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class HomeScreen extends PureComponent {
   onPress = () => {
@@ -24,3 +25,15 @@ export default class HomeScreen extends PureComponent {
     );
   }
 }
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func
+  })
+};
+
+HomeScreen.defaultProps = {
+  navigation: {
+    navigate: () => {}
+  }
+};

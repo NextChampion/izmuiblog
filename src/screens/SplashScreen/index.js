@@ -9,6 +9,7 @@
 import React, { PureComponent } from 'react';
 import { Text, View, Button } from 'react-native';
 import Splash from 'react-native-splash-screen';
+import PropTypes from 'prop-types';
 import connect from '../../redux/connect';
 
 connect(['profile']);
@@ -35,3 +36,15 @@ export default class SplashScreen extends PureComponent {
     );
   }
 }
+
+SplashScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func
+  })
+};
+
+SplashScreen.defaultProps = {
+  navigation: {
+    navigate: () => {}
+  }
+};

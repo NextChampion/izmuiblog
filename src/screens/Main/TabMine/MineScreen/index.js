@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import {
   View, Alert, StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { PlaceHolder } from '../../../../components';
 import server from '../../../../server';
 import connect from '../../../../redux/connect';
@@ -59,6 +60,21 @@ export default class MineScreen extends PureComponent {
     );
   }
 }
+
+MineScreen.propTypes = {
+  mine: PropTypes.shape({
+    size: PropTypes.number,
+    get: PropTypes.func
+  })
+};
+
+MineScreen.defaultProps = {
+  mine: {
+    size: 0,
+    get: () => {}
+  }
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

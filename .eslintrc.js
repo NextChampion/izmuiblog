@@ -29,5 +29,6 @@ module.exports = {
     'import/no-unresolved': 'warn',
     'import/namespace': 'error',
     'import/export': 'warn',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   },
 };

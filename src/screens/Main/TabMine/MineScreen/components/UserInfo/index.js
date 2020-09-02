@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import {
   Text, View, StyleSheet, Image,
+  ViewPropTypes
 } from 'react-native';
+import PropTypes from 'prop-types';
 import UI from '../../../../../../UI';
 
 export default class UserInfo extends PureComponent {
@@ -30,6 +32,22 @@ export default class UserInfo extends PureComponent {
     );
   }
 }
+
+UserInfo.propTypes = {
+  userInfo: PropTypes.shape({
+    size: PropTypes.number,
+    get: PropTypes.func
+  }),
+  style: ViewPropTypes.style
+};
+
+UserInfo.defaultProps = {
+  userInfo: {
+    size: 0,
+    get: () => {}
+  },
+  style: null
+};
 
 function Item(props) {
   const { title, num } = props || {};
