@@ -7,11 +7,15 @@
  * @FilePath: /lvsejunying/src/screens/TabMine/MineScreen/index.js
  */
 import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Alert} from 'react-native';
 import {Header} from '../../../../components';
 import UserInfo from './components/UserInfo';
 import Num from './components/Num';
+import server from '../../../../server';
+import connect from '../../../../redux/connect';
+import {dispatch} from '../../../../redux';
 
+@connect(['mine'])
 export default class MineScreen extends PureComponent {
   static whyDidYouRender = true;
   state = {
@@ -23,17 +27,24 @@ export default class MineScreen extends PureComponent {
   };
 
   componentDidMount() {
-    this.timer = setInterval(() => {
-      this.increase();
-    }, 1000);
+    this.getUserInfo();
   }
 
-  componentWillUnmount() {
-    if (this.timer) {
-      clearInterval(this.timer);
-      this.timer = null;
+  componentWillUnmount() {}
+  getUserInfo = async () => {
+    const {mine} = this.props;
+    // 如果有信息,暂时不获取
+    if (mine.size) {
+      return;
     }
-  }
+    const result = await server.user.getUserInfo();
+    const {success, data, error} = result || {};
+    if (!success) {
+      Alert('Error', error);
+      return;
+    }
+    dispatch('UPDATE_MINE', data);
+  };
 
   increase = () => {
     const {num} = this.state;
