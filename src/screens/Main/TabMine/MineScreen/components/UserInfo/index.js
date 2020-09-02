@@ -40,9 +40,9 @@ function Item(props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: UI.color.white,
-    paddingHorizontal: UI.margin.container,
   },
   topView: {
+    paddingHorizontal: UI.margin.container,
     flexDirection: 'row',
     backgroundColor: UI.color.white,
     paddingVertical: UI.margin.normal,
