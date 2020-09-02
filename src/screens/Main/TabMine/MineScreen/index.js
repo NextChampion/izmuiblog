@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import { PlaceHolder } from '../../../../components';
 import server from '../../../../server';
 import connect from '../../../../redux/connect';
-import { dispatch } from '../../../../redux';
 import UI from '../../../../UI';
 import UserInfo from './components/UserInfo';
 
@@ -40,7 +39,7 @@ export default class MineScreen extends PureComponent {
       Alert('Error', error);
       return;
     }
-    dispatch('UPDATE_MINE', data);
+    server.user.saveMineInfo(data);
   };
 
   increase = () => {

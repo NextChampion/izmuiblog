@@ -15,6 +15,9 @@ const user = {
   save: (userInfo) => {
     dispatch('UPDATE_USERINFO', userInfo);
   },
+  saveMineInfo: (mineInfo) => {
+    dispatch('UPDATE_MINE', mineInfo);
+  },
   auth: async (authUrl) => {
     let res = null;
     try {
