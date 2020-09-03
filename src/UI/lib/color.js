@@ -12,5 +12,6 @@ export default {
   primary: '#e66f36',
   gray: '#909090',
   title: '#272727',
+  blue: '#2273F4'
   // black: '#ccc',
 };

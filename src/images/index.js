@@ -14,6 +14,7 @@ const Images = {
     dianzan: require('./dianzan.png'),
     share: require('./share.png'),
     message: require('./message.png'),
+    video: require('./blog_title_video.png')
   }
 };
 

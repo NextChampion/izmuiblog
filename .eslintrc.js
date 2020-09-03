@@ -12,7 +12,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-use-before-define': [
       'error',
-      { functions: true, classes: true, variables: false },
+      { functions: false, classes: true, variables: false },
     ],
     'no-var': 'error',
     'global-require': 'off',
