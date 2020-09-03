@@ -14,6 +14,15 @@ const common = {
   },
   saveEmotions: (emotions) => {
     dispatch('SAVE_EMOTIONS', emotions);
+  },
+  getEmojiUrl: (name) => {
+    const { common: commonData } = store.getState();
+    const emotions = commonData.get('emotions');
+    if (!emotions) {
+      return null;
+    }
+    const emoji = emotions.find((item) => item.phrase === name);
+    return emoji;
   }
 
 };
