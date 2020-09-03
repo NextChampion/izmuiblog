@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   Text, View, StyleSheet, Image
 } from 'react-native';
+import HTMLView from 'react-native-htmlview';
 import UI from '../../../../../UI';
 
 export default class Blog extends PureComponent {
@@ -18,7 +19,10 @@ export default class Blog extends PureComponent {
             <Text style={styles.createTime}>
               {createdAt}
               {' '}
-              <Text style={styles.source}>{source}</Text>
+              <HTMLView
+                value={source}
+                stylesheet={styles.htmlView}
+              />
             </Text>
           </View>
         </View>
@@ -52,5 +56,9 @@ const styles = StyleSheet.create({
   createTime: {},
   source: {
 
+  },
+  htmlView: {
+    fontWeight: '300',
+    color: '#FF3366', // make links coloured pink
   },
 });
