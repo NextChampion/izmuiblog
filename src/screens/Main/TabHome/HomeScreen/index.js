@@ -47,13 +47,13 @@ export default class HomeScreen extends PureComponent {
 
   renderItem = ({ item }) => <Blog data={item} />
 
+  keyExtractor = (item) => item.idstr
+
   render() {
     const { bolgs } = this.state;
     return (
       <View>
-        <Text> HomeScreen </Text>
-        <Button title="跳转到setting" onPress={this.onPress} />
-        <FlatList data={bolgs} renderItem={this.renderItem} />
+        <FlatList data={bolgs} keyExtractor={this.keyExtractor} renderItem={this.renderItem} />
       </View>
     );
   }
