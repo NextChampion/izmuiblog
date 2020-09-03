@@ -7,15 +7,15 @@
  * @FilePath: /lvsejunying/src/App.js
  */
 
-import React, {useEffect} from 'react';
-import Navigator from './navigator';
-import {store, dispatch, Provider} from './redux';
+import React, { useEffect } from 'react';
 import Splash from 'react-native-splash-screen';
+import Navigator from './navigator';
+import { store, dispatch, Provider } from './redux';
 
 function App() {
   useEffect(() => {
     Splash.hide();
-    dispatch('UPDATE_PROFILE', {signup: false});
+    dispatch('UPDATE_PROFILE', { signup: false });
   }, []);
   return (
     <Provider store={store}>
