@@ -24,6 +24,10 @@ export const UserUrl = {
   login: `https://api.weibo.com/oauth2/access_token?client_id=${AppKey}&client_secret=${clientSecret}&grant_type=authorization_code&redirect_uri=${redirectUri}`,
 };
 
+export const BlogUrl = {
+  followList: 'https://api.weibo.com/2/statuses/home_timeline.json'
+};
+
 export function getGetUrl(base, params) {
   if (!params) {
     return base;

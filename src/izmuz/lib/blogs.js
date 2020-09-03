@@ -1,15 +1,17 @@
 import { dispatch, store, } from '../../redux';
-import server from '../../server';
-import { getGetUrl, UserUrl, } from '../../server/lib/base';
+
+import { getGetUrl, BlogUrl, } from '../../server/lib/base';
+import axios from '../../server';
 
 const blogs = {
-
-  getUserInfo: () => {
+  getBlogList: (sinceId, page = 1) => {
     const { profile } = store.getState();
     const accessToken = profile.get('access_token');
     const uid = profile.get('uid');
-    const url = getGetUrl(UserUrl.userInfo, { access_token: accessToken, uid });
-    return server.user.getUserInfo(url);
+    const url = getGetUrl(BlogUrl.followList, {
+      access_token: accessToken, uid, count: 10, page, since_id: sinceId
+    });
+    return axios.get(url);
   },
 
 };
