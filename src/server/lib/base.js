@@ -28,6 +28,10 @@ export const BlogUrl = {
   followList: 'https://api.weibo.com/2/statuses/home_timeline.json'
 };
 
+export const CommonUrl = {
+  emotions: 'https://api.weibo.com/2/emotions.json',
+};
+
 export function getGetUrl(base, params) {
   if (!params) {
     return base;

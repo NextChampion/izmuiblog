@@ -50,6 +50,18 @@ export const mine = {
   },
 };
 
+export const common = {
+  default: Immutable.fromJS({
+    emotions: null
+  }),
+  persist: true,
+  actions: {
+    SAVE_EMOTIONS: {
+      reducer: (state, { payload }) => state.set('emotions', payload),
+    },
+  },
+};
+
 export const uiState = {
   default: Immutable.fromJS({}),
   actions: {},
