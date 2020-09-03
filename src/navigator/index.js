@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
 import StackNav from './StackNav/index';
 import connect from '../redux/connect';
 import AuthNav from './AuthNav';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default class Navigator extends Component {
             animationEnabled: false,
           }}
         >
+          <Stack.Screen name="Splash" component={SplashScreen} />
           {!accessToken ? (
             <Stack.Screen name="Auth" component={AuthNav} />
           ) : (

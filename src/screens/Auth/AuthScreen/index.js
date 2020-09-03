@@ -43,6 +43,8 @@ export default class AuthScreen extends PureComponent {
       return;
     }
     izmuz.mine.save(data);
+    const { navigation, } = this.props;
+    navigation.replace('Main');
   };
 
   rightAction = () => {};
@@ -74,13 +76,15 @@ AuthScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
     pop: PropTypes.func,
+    replace: PropTypes.func,
   })
 };
 
 AuthScreen.defaultProps = {
   navigation: {
     navigate: () => {},
-    pop: () => {}
+    pop: () => {},
+    replace: () => {}
   }
 };
 

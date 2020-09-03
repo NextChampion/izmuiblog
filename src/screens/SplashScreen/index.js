@@ -7,31 +7,55 @@
  * @FilePath: /lvsejunying/src/screens/SplashScreen/index.js
  */
 import React, { PureComponent } from 'react';
-import { Text, View, Button } from 'react-native';
-import Splash from 'react-native-splash-screen';
+import { Text, View, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import connect from '../../redux/connect';
+import izmuz from '../../izmuz';
+import { onLoadRedux } from '../../redux';
 
-connect(['profile']);
+@connect(['profile'])
 export default class SplashScreen extends PureComponent {
-  componentDidMount() {
-    Splash.hide();
+  constructor(props) {
+    super(props);
+    this.initilize();
+  }
+
+  initilize = () => {
+    onLoadRedux((store) => {
+      const { common, profile } = store;
+      const accessToken = profile.get('access_token');
+      const emotions = common.get('emotions');
+      if (!emotions && accessToken) {
+        this.getEmotions();
+      }
+      this.goToHome();
+    });
+  }
+
+  getEmotions = async () => {
+    const result = await izmuz.common.getEmotions();
+    const { success, data, error } = result || {};
+    if (!success) {
+      Alert.alert('Error', error);
+      return;
+    }
+    izmuz.common.saveEmotions(data);
   }
 
   goToHome = () => {
-    const { navigation } = this.props;
-    navigation.navigate('Main');
-  };
-
-  onBtnClick = () => {
-    this.goToHome();
+    const { navigation, profile, } = this.props;
+    const accessToken = profile.get('access_token');
+    if (accessToken) {
+      navigation.replace('Main');
+    } else {
+      navigation.replace('Auth');
+    }
   };
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Text> SplashScreen </Text>
-        <Button title="进入首页" onPress={this.onBtnClick} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text> 欢迎使用izmuz微博 </Text>
       </View>
     );
   }
@@ -39,12 +63,20 @@ export default class SplashScreen extends PureComponent {
 
 SplashScreen.propTypes = {
   navigation: PropTypes.shape({
-    navigate: PropTypes.func
+    navigate: PropTypes.func,
+    replace: PropTypes.func,
+  }),
+  profile: PropTypes.shape({
+    get: PropTypes.func,
   })
 };
 
 SplashScreen.defaultProps = {
   navigation: {
-    navigate: () => {}
+    navigate: () => {},
+    replace: () => {},
+  },
+  profile: {
+    get: () => {}
   }
 };
