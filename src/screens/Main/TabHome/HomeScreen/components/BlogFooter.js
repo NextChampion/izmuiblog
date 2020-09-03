@@ -34,7 +34,7 @@ function Item(props) {
   return (
     <View style={styles.item}>
       <Image style={styles.icon} source={getIcon()} />
-      <Text>{count}</Text>
+      <Text style={styles.count}>{count}</Text>
     </View>
   );
 }
@@ -54,7 +54,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   icon: {
-    width: 20,
-    height: 20,
+    width: 13,
+    height: 13,
+    marginRight: 10,
+  },
+  count: {
+    fontSize: UI.fontSize.small,
+    color: UI.color.black
   }
 });
