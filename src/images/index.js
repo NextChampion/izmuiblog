@@ -8,6 +8,12 @@ const Images = {
     wallet: require('./wallet.png'),
     photo: require('./xiangce.png'),
     zan: require('./zan.png'),
+
+  },
+  blog: {
+    dianzan: require('./dianzan.png'),
+    share: require('./share.png'),
+    message: require('./message.png'),
   }
 };
 
