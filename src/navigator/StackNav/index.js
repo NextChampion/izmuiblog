@@ -12,6 +12,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 
 import TabNav from '../TabNav';
 import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
+import MineBlogScreen from '../../screens/Main/TabMine/MineBlogScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ function StackNav() {
     >
       <Stack.Screen name="Home" component={TabNav} />
       <Stack.Screen name="Setting" component={SettingScreen} />
+      <Stack.Screen name="MineBlog" component={MineBlogScreen} />
     </Stack.Navigator>
   );
 }

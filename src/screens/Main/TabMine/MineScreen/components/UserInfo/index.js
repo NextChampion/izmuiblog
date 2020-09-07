@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import {
   Text, View, StyleSheet, Image,
-  ViewPropTypes
+  ViewPropTypes, TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import UI from '../../../../../../UI';
@@ -9,11 +9,18 @@ import UI from '../../../../../../UI';
 export default class UserInfo extends PureComponent {
   static whyDidYouRender = true;
 
+  onUserInfoPress = () => {
+    const { onPress } = this.props;
+    if (onPress) {
+      onPress('userInfo');
+    }
+  }
+
   render() {
-    const { userInfo, style } = this.props;
+    const { userInfo, style, } = this.props;
     return (
       <View style={StyleSheet.compose(styles.container, style)}>
-        <View style={styles.topView}>
+        <TouchableOpacity style={styles.topView} onPress={this.onUserInfoPress}>
           <Image
             style={styles.avatar}
             source={{ uri: userInfo.get('avatar_large') }}
@@ -22,7 +29,7 @@ export default class UserInfo extends PureComponent {
             <Text style={styles.nickname}>{userInfo.get('screen_name')}</Text>
             <Text style={styles.desc}>{userInfo.get('description')}</Text>
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={styles.bottomView}>
           <Item title="微博" num={userInfo.get('statuses_count')} />
           <Item title="关注" num={userInfo.get('friends_count')} />
@@ -38,7 +45,8 @@ UserInfo.propTypes = {
     size: PropTypes.number,
     get: PropTypes.func
   }),
-  style: ViewPropTypes.style
+  style: ViewPropTypes.style,
+  onPress: PropTypes.func
 };
 
 UserInfo.defaultProps = {
@@ -46,7 +54,8 @@ UserInfo.defaultProps = {
     size: 0,
     get: () => {}
   },
-  style: null
+  style: null,
+  onPress: () => {}
 };
 
 function Item(props) {

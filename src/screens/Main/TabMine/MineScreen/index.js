@@ -49,6 +49,13 @@ export default class MineScreen extends PureComponent {
     this.setState({ num: num + 1 });
   };
 
+  onMineInfoPress = (type) => {
+    if (type === 'userInfo') {
+      const { navigation } = this.props;
+      navigation.navigate('MineBlog');
+    }
+  }
+
   render() {
     const { mine } = this.props;
     if (!mine.size) {
@@ -56,7 +63,7 @@ export default class MineScreen extends PureComponent {
     }
     return (
       <ScrollView style={styles.container}>
-        <UserInfo style={styles.userInfo} userInfo={mine} />
+        <UserInfo style={styles.userInfo} userInfo={mine} onPress={this.onMineInfoPress} />
         <DashBoard />
       </ScrollView>
     );
@@ -67,6 +74,9 @@ MineScreen.propTypes = {
   mine: PropTypes.shape({
     size: PropTypes.number,
     get: PropTypes.func
+  }),
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func
   })
 };
 
@@ -74,6 +84,9 @@ MineScreen.defaultProps = {
   mine: {
     size: 0,
     get: () => {}
+  },
+  navigation: {
+    navigate: () => {}
   }
 };
 
