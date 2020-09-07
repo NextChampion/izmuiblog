@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import MineBlogUserInfo from './components/MineBlogUserInfo';
 import connect from '../../../../redux/connect';
+import MineBlogTab from './components/MineBlogTab';
 
 @connect(['mine'])
 export default class MineBlogScreen extends PureComponent {
@@ -11,6 +12,7 @@ export default class MineBlogScreen extends PureComponent {
       <View style={styles.container}>
         <MineBlogUserInfo data={mine} />
         <Text> MineBlogScreen </Text>
+        <MineBlogTab />
       </View>
     );
   }

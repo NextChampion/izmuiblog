@@ -10,6 +10,7 @@ import margin from './lib/margin';
 import padding from './lib/padding';
 import fontWeight from './lib/fontWeight';
 import fontSize from './lib/fontSize';
+import size from './lib/size';
 
 const UI = {
   color,
@@ -17,6 +18,7 @@ const UI = {
   padding,
   fontWeight,
   fontSize,
+  size
 };
 
 export default UI;
