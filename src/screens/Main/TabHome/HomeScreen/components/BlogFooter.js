@@ -2,20 +2,35 @@ import React, { PureComponent } from 'react';
 import {
   Text, View, Image, StyleSheet
 } from 'react-native';
+import PropTypes from 'prop-types';
 import Images from '../../../../../images';
 import UI from '../../../../../UI';
 
 export default class BlogFooter extends PureComponent {
   render() {
+    const { data } = this.props;
+    const {
+      reposts_count: resposteCount,
+      comments_count: commentCount,
+      attitudes_count: attitudesCount
+    } = data || {};
     return (
       <View style={styles.container}>
-        <Item type="share" count={4} />
-        <Item type="message" count={4} />
-        <Item type="zan" count={4} />
+        <Item type="share" count={resposteCount} />
+        <Item type="message" count={commentCount} />
+        <Item type="zan" count={attitudesCount} />
       </View>
     );
   }
 }
+
+BlogFooter.propTypes = {
+  data: PropTypes.shape({}),
+};
+
+BlogFooter.defaultProps = {
+  data: {},
+};
 
 function Item(props) {
   const { type, count } = props || {};

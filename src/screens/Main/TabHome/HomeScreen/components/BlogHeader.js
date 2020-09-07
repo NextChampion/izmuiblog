@@ -9,11 +9,11 @@ import UI from '../../../../../UI';
 
 export default class BlogHeader extends PureComponent {
   render() {
-    const { data, } = this.props;
+    const { data, screenName } = this.props;
     const {
       created_at: createdAt, source, user,
     } = data || {};
-    const { avatar_hd: avatarHd, screen_name: screenName } = user || {};
+    const { avatar_hd: avatarHd, } = user || {};
     const time = moment(createdAt).fromNow();
     return (
       <View style={styles.container}>
@@ -40,11 +40,13 @@ export default class BlogHeader extends PureComponent {
   }
 }
 BlogHeader.propTypes = {
-  data: PropTypes.shape({})
+  data: PropTypes.shape({}),
+  screenName: PropTypes.string,
 };
 
 BlogHeader.defaultProps = {
-  data: {}
+  data: {},
+  screenName: '',
 };
 
 const styles = StyleSheet.create({

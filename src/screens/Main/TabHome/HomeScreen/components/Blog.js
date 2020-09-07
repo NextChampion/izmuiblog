@@ -4,18 +4,18 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import UI from '../../../../../UI';
+import BlogHeader from './BlogHeader';
 import BlogContent from './BlogContent';
 import BlogFooter from './BlogFooter';
-import BlogHeader from './BlogHeader';
-import BlogTitle from './BlogTitle';
 
 export default class Blog extends PureComponent {
   render() {
     const { data, } = this.props;
+    const { user } = data || {};
+    const { screen_name: screenName } = user || {};
     return (
       <View style={styles.container}>
-        <BlogHeader data={data} />
-        <BlogTitle data={data} />
+        <BlogHeader screenName={screenName} data={data} />
         <BlogContent data={data} />
         <BlogFooter data={data} />
       </View>
