@@ -9,7 +9,9 @@ import Button from './Button';
 import Header from './Header';
 import Container from './Container';
 import PlaceHolder from './PlaceHolder';
+import SexIcon from './SexIcon';
+import Avatar from './Avatar';
 
 export {
-  Button, Container, Header, PlaceHolder,
+  Button, Container, Header, PlaceHolder, SexIcon, Avatar
 };

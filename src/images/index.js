@@ -15,6 +15,10 @@ const Images = {
     share: require('./share.png'),
     message: require('./message.png'),
     video: require('./blog_title_video.png')
+  },
+  user: {
+    sex_male: require('./sex_male.png'),
+    sex_female: require('./sex_female.png'),
   }
 };
 
