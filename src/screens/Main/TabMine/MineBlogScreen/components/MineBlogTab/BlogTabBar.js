@@ -15,9 +15,9 @@ export default class BlogTabBar extends PureComponent {
           style={styles.tabbar}
           renderTabBarItem={(props) => {
             const { route, onPress } = props;
-            const { title } = route || {};
+            const { title, key } = route || {};
             return (
-              <TouchableOpacity style={styles.tabbarItem} onPress={onPress}>
+              <TouchableOpacity key={key} style={styles.tabbarItem} onPress={onPress}>
                 <Text>{title}</Text>
               </TouchableOpacity>
             );

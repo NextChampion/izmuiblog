@@ -13,6 +13,14 @@ const blogs = {
     });
     return axios.get(url);
   },
+  getBlogListWithUserId: (userId, sinceId = null, page = 1) => {
+    const { profile } = store.getState();
+    const accessToken = profile.get('access_token');
+    const url = getGetUrl(BlogUrl.getUserBlog, {
+      access_token: accessToken, uid: userId, count: 10, page, since_id: sinceId
+    });
+    return axios.get(url);
+  },
 
 };
 export default blogs;

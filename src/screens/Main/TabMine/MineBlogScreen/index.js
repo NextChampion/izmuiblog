@@ -8,6 +8,7 @@ import MineBlogTab from './components/MineBlogTab';
 export default class MineBlogScreen extends PureComponent {
   render() {
     const { mine } = this.props;
+    console.log('mine', mine.toJS());
     return (
       <View style={styles.container}>
         <MineBlogUserInfo data={mine} />

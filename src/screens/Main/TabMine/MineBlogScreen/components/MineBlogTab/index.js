@@ -32,7 +32,7 @@ export default function MineBlogTab() {
       onIndexChange={setIndex}
       initialLayout={initialLayout}
       // eslint-disable-next-line react/jsx-props-no-spreading
-      renderTabBar={(props) => <BlogTabBar {...props} />}
+      renderTabBar={(params) => <BlogTabBar {...params} />}
     />
   );
 }

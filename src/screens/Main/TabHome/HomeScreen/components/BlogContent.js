@@ -140,11 +140,10 @@ const styles = StyleSheet.create({
     width: 300,
     height: 400,
     borderWidth: 1,
-    backgroundColor: 'red'
   },
   emoji: {
     width: 15,
     height: 15,
   },
-  content: { backgroundColor: 'red' },
+  content: { },
 });

@@ -8,6 +8,6 @@
 import { connect as connectRedux } from 'react-redux';
 import R from 'ramda';
 
-export default function connect(keys) {
-  return connectRedux(R.pick(keys));
+export default function connect(keys, ...others) {
+  return connectRedux(R.pick(keys), ...others);
 }

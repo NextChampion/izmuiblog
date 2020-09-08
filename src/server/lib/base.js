@@ -25,7 +25,8 @@ export const UserUrl = {
 };
 
 export const BlogUrl = {
-  followList: 'https://api.weibo.com/2/statuses/home_timeline.json'
+  followList: 'https://api.weibo.com/2/statuses/home_timeline.json',
+  getUserBlog: 'https://api.weibo.com/2/statuses/user_timeline.json'
 };
 
 export const CommonUrl = {
