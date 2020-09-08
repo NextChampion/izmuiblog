@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
 import { TabView, SceneMap, } from 'react-native-tab-view';
 import MineBlogHomeScreen from '../../../MineBlogHomeScreen';
 import MineBlogListScreen from '../../../MineBlogListScreen';
 import MineBlogVideoScreen from '../../../MineBlogVideoScreen';
 import MineBlogPhotoScreen from '../../../MineBlogPhotoScreen';
 import BlogTabBar from './BlogTabBar';
+import UI from '../../../../../../UI';
 
-const initialLayout = { width: Dimensions.get('window').width };
+const initialLayout = { width: UI.size.windowWidth };
 
 export default function MineBlogTab() {
   const [index, setIndex] = React.useState(0);
@@ -36,9 +36,3 @@ export default function MineBlogTab() {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  scene: {
-    flex: 1,
-  },
-});

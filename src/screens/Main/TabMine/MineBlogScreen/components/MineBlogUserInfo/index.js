@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
   },
   desc: {
     marginTop: 5,
-
+    marginBottom: 10,
   }
 });

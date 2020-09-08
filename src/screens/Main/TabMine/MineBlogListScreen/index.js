@@ -33,7 +33,7 @@ export default class MineBlogListScreen extends PureComponent {
       return;
     }
     const { statuses } = data || {};
-    this.setState({ loaded: true, bolgs: statuses });
+    this.setState({ loaded: true, blogs: statuses });
   }
 
   onPress = () => {
@@ -46,11 +46,11 @@ export default class MineBlogListScreen extends PureComponent {
   keyExtractor = (item) => item.idstr
 
   render() {
-    const { bolgs } = this.state;
+    const { blogs } = this.state;
     return (
       <View>
         <FlatList
-          data={bolgs}
+          data={blogs}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
         />

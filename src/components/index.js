@@ -11,7 +11,8 @@ import Container from './Container';
 import PlaceHolder from './PlaceHolder';
 import SexIcon from './SexIcon';
 import Avatar from './Avatar';
+import RowItem from './RowItem';
 
 export {
-  Button, Container, Header, PlaceHolder, SexIcon, Avatar
+  Button, Container, Header, PlaceHolder, SexIcon, Avatar, RowItem
 };

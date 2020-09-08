@@ -8,8 +8,7 @@
  */
 import React, { PureComponent } from 'react';
 import {
-  Text, View, Button, Alert,
-  FlatList
+  View, Alert, FlatList
 } from 'react-native';
 import PropTypes from 'prop-types';
 import izmuz from '../../../../izmuz';
@@ -30,14 +29,13 @@ export default class HomeScreen extends PureComponent {
 
   getBlogList = async () => {
     const result = await izmuz.blogs.getBlogList();
-    console.log('ssss', result);
     const { success, data, error } = result || {};
     if (!success) {
       Alert.alert('Error', error);
       return;
     }
     const { statuses } = data || {};
-    this.setState({ loaded: true, bolgs: statuses });
+    this.setState({ loaded: true, blogs: statuses });
   }
 
   onPress = () => {
@@ -50,10 +48,10 @@ export default class HomeScreen extends PureComponent {
   keyExtractor = (item) => item.idstr
 
   render() {
-    const { bolgs } = this.state;
+    const { blogs } = this.state;
     return (
       <View>
-        <FlatList data={bolgs} keyExtractor={this.keyExtractor} renderItem={this.renderItem} />
+        <FlatList data={blogs} keyExtractor={this.keyExtractor} renderItem={this.renderItem} />
       </View>
     );
   }

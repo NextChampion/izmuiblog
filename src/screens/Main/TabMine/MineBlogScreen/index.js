@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import MineBlogUserInfo from './components/MineBlogUserInfo';
 import connect from '../../../../redux/connect';
 import MineBlogTab from './components/MineBlogTab';
@@ -8,16 +9,32 @@ import MineBlogTab from './components/MineBlogTab';
 export default class MineBlogScreen extends PureComponent {
   render() {
     const { mine } = this.props;
-    console.log('mine', mine.toJS());
     return (
       <View style={styles.container}>
         <MineBlogUserInfo data={mine} />
-        <Text> MineBlogScreen </Text>
         <MineBlogTab />
       </View>
     );
   }
 }
+
+MineBlogScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func
+  }),
+  mine: PropTypes.shape({
+    get: PropTypes.func
+  })
+};
+
+MineBlogScreen.defaultProps = {
+  navigation: {
+    navigate: () => {}
+  },
+  mine: {
+    get: () => {}
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
